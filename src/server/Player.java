@@ -110,6 +110,11 @@ public class Player {
 		this.board = theBoard;
 	}
 	
+	/**
+	 * Reads incomming messages from the server. 
+	 * A convenience method.
+	 * @return
+	 */
 	public String readMessage() {
 		String message = "";
 		try {
@@ -170,6 +175,11 @@ public class Player {
 		return out;
 	}
 	
+	/**
+	 * Determines if the received string is an integer or not.
+	 * @param parsableStringInteger
+	 * @return
+	 */
 	private boolean isParsableInt(String parsableStringInteger) {
 		boolean isInteger = true;
 		try {

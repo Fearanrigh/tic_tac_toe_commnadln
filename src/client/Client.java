@@ -6,6 +6,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * A client/server tic tac toe game command line version
+ * @author Sean Barton
+ *
+ */
 public class Client {
 	
 	private Socket aSocket;
@@ -15,7 +20,11 @@ public class Client {
 	
 	private final String EOM = "EOM"; // end of message terminating string
 
-	
+	/**
+	 * Client side of the game
+	 * @param serverName - The server name
+	 * @param portNumber - The server port number
+	 */
 	public Client (String serverName, int portNumber) {
 		
 		try {
@@ -33,6 +42,9 @@ public class Client {
 		}
 	}
 	
+	/**
+	 * Communication receiver from the server
+	 */
 	public void communicate () {
 		String line = "";
 		
@@ -60,6 +72,11 @@ public class Client {
 		System.exit(0);
 	}
 	
+	/**
+	 * Convenience method for sending messages to
+	 * the server.
+	 * @return
+	 */
 	private String receiveMessage() {
 		String response = "";
 		try {
@@ -70,6 +87,9 @@ public class Client {
 		return response;
 	}
 	
+	/**
+	 * Gets the players name and sends to the server
+	 */
 	private void getPlayerName() {
 		String line = "";
 		String response = "";
@@ -85,6 +105,9 @@ public class Client {
 		}
 	}
 	
+	/**
+	 * Closes all sockets on program termination
+	 */
 	private void closeSockets() {
 
 		try {
@@ -96,6 +119,10 @@ public class Client {
 		}
 	}
 	
+	/**
+	 * Gets input from the keyboard
+	 * @return
+	 */
 	private String getStdInput() {
 		String line = "";
 		try {
@@ -107,6 +134,10 @@ public class Client {
 		return line;
 	}
 	
+	/**
+	 * Gets the row or column from the player and
+	 * sends to the server.
+	 */
 	private void getRowOrColumn() {
 		
 		String response = "";
@@ -128,7 +159,11 @@ public class Client {
 		}
 	}
 
-	
+	/**
+	 * Initiates the client side of the game.
+	 * @param args - Command line arguments
+	 * @throws IOException
+	 */
 	public static void main (String [] args) throws IOException{
 		Client aClient = new Client ("localhost", 9090);
 		aClient.communicate();

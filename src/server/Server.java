@@ -10,6 +10,11 @@ import java.net.SocketTimeoutException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * The server side of the command line tic tac toe game
+ * @author Sean Barton
+ *
+ */
 public class Server {
 
 	private Socket aSocket1, aSocket2;
@@ -19,6 +24,10 @@ public class Server {
 	
 	private ExecutorService pool;
 
+	/**
+	 * Constructs the server on static TCP port 9090
+	 * with 3 threads.
+	 */
 	public Server() {
 		try {
 			serverSocket = new ServerSocket(9090);
@@ -28,6 +37,10 @@ public class Server {
 		}
 	}
 	
+	/**
+	 * Receives the incomming sockets from up to 2 players on a single
+	 * thread.
+	 */
 	public void runServer() {
 		System.out.println("Waiting for first connection...");
 		try {
@@ -61,6 +74,11 @@ public class Server {
 		}
 	}
 
+	/**
+	 * Initiates the server side of the game.
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 
 		Server myServer = new Server();
